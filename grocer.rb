@@ -37,11 +37,19 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
+<<<<<<< HEAD
   for coupon in coupons do
     for x in cart.select{|good| good[:item] == coupon[:item]}
       x[:count] += -coupon[:num]
     end
     cart << {:item => coupon[:item]+" W/COUPON", :price => coupon[:cost]/coupon[:num], :clearance => cart.select{|good| good[:item] == coupon[:item]}[0][:clearance], :count => coupon[:num]
+=======
+  puts "checkpoint 1"
+  for coupon in coupons do
+    puts cart.select{|good| good[:item] == coupon[:item]}[:count]
+    cart.select{|good| good[:item] == coupon[:item]}[:count] += -coupon[:num]
+    cart << {:item => coupon[:item]+" W/COUPON", :price => coupon[:cost]/coupon[:num], :clearance => true, :count => coupon[:num]}
+>>>>>>> 03c91df6d87b9a78759e47f2c17e9a229d79471d
   end
   cart
 end
